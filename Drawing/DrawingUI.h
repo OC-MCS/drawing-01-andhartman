@@ -5,25 +5,23 @@ using namespace std;
 using namespace sf;
 #include "ShapeMgr.h"
 
-// finish this code; add functions, data as needed
-
-class DrawingUI
-{
+class DrawingUI {
 private:
-
 public:
-	DrawingUI(Vector2f p)
+	DrawingUI(Vector2f p) {}
+
+	void draw(RenderWindow& win, ShapeMgr* mgr) 
 	{
+		for (int i = 0; i != mgr->getShapes().size(); i++)
+			mgr->getShapes()[i]->draw(win);
 	}
 
-	void draw(RenderWindow& win, ShapeMgr *mgr)
+	bool isMouseInCanvas(Vector2f mousePos) 
 	{
-	}
-	
-	bool isMouseInCanvas(Vector2f mousePos)
-	{
-		return false; // just to make it compile
+		bool inCanvas = false;
+		if (mousePos.x > 191 && mousePos.y < 464)
+			inCanvas = true;
+		return inCanvas;
 	}
 
 };
-
